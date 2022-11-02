@@ -1,0 +1,102 @@
+#######################Part1###########################
+Start time: 15:00:26 on Oct 31,2022
+vlog part1.sv 
+Model Technology ModelSim - Intel FPGA Edition vlog 10.6d Compiler 2018.02 Feb 24 2018
+-- Compiling module part1
+-- Compiling module T_FF
+
+Top level modules:
+	part1
+End time: 15:00:27 on Oct 31,2022, Elapsed time: 0:00:01
+Errors: 0, Warnings: 0
+Reading pref.tcl
+
+# 10.6d
+
+# vsim -c -do "/cad2/ece253f/public/5/test/run.do" work.part1_tb 
+# Start time: 15:00:27 on Oct 31,2022
+# Loading sv_std.std
+# Loading work.part1_tb
+# Loading work.part1
+# Loading work.T_FF
+# do /cad2/ece253f/public/5/test/run.do
+# ** Warning: (vsim-3116) Problem reading symbols from /lib/i386-linux-gnu/librt.so.1 : module was loaded at an absolute address.
+# ** Warning: (vsim-3116) Problem reading symbols from /lib/i386-linux-gnu/libdl.so.2 : module was loaded at an absolute address.
+# ** Warning: (vsim-3116) Problem reading symbols from /lib/i386-linux-gnu/libm.so.6 : module was loaded at an absolute address.
+# ** Warning: (vsim-3116) Problem reading symbols from /lib/i386-linux-gnu/libpthread.so.0 : module was loaded at an absolute address.
+# ** Warning: (vsim-3116) Problem reading symbols from /lib/i386-linux-gnu/libc.so.6 : module was loaded at an absolute address.
+# ** Warning: (vsim-3116) Problem reading symbols from /lib/ld-linux.so.2 : module was loaded at an absolute address.
+# ** Warning: (vsim-3116) Problem reading symbols from /lib/i386-linux-gnu/libnss_files.so.2 : module was loaded at an absolute address.
+# At cycle                    3, reset = 1, Enable = 0, current out =   0
+# At cycle                    3, Your output =   0, expected output =   0, PASSED
+# At cycle                    3, reset = 0, Enable = 0, current out =   0
+# At cycle                    6, Your output =   0, expected output =   0, PASSED
+# At cycle                    7, reset = 0, Enable = 1, current out =   0
+# At cycle                   31, Your output =  24, expected output =  24, PASSED
+# At cycle                   37, Your output =  30, expected output =  30, PASSED
+# At cycle                   43, Your output =  36, expected output =  36, PASSED
+# At cycle                   65, Your output =  58, expected output =  58, PASSED
+# At cycle                   71, Your output =  64, expected output =  64, PASSED
+# At cycle                   77, Your output =  70, expected output =  70, PASSED
+# At cycle                   95, Your output =  88, expected output =  88, PASSED
+# At cycle                  109, Your output = 102, expected output = 102, PASSED
+# ** Note: $finish    : /cad2/ece253f/public/5/test/part1_tb.sv(57)
+#    Time: 109 ns  Iteration: 0  Instance: /part1_tb
+# End time: 15:00:27 on Oct 31,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 7
+######################SUMMARY of part1##########################
+Number of Errors by compiling the verilog code: 0
+Number of Errors by running the simulation: 0
+Number of PASSED: 10
+Number of FAILED: 0
+part1 is done!
+#######################Part2###########################
+Start time: 15:00:27 on Oct 31,2022
+vlog part2.sv 
+Model Technology ModelSim - Intel FPGA Edition vlog 10.6d Compiler 2018.02 Feb 24 2018
+-- Compiling module part2
+-- Compiling module RateDivider
+-- Compiling module DisplayCounter
+
+Top level modules:
+	part2
+End time: 15:00:27 on Oct 31,2022, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Reading pref.tcl
+
+# 10.6d
+
+# vsim -c -do "/cad2/ece253f/public/5/test/run.do" work.part2_tb 
+# Start time: 15:00:28 on Oct 31,2022
+# Loading sv_std.std
+# Loading work.part2_tb
+# Loading work.part2
+# Loading work.RateDivider
+# Loading work.DisplayCounter
+# do /cad2/ece253f/public/5/test/run.do
+# ** Warning: (vsim-3116) Problem reading symbols from /lib/i386-linux-gnu/librt.so.1 : module was loaded at an absolute address.
+# ** Warning: (vsim-3116) Problem reading symbols from /lib/i386-linux-gnu/libdl.so.2 : module was loaded at an absolute address.
+# ** Warning: (vsim-3116) Problem reading symbols from /lib/i386-linux-gnu/libm.so.6 : module was loaded at an absolute address.
+# ** Warning: (vsim-3116) Problem reading symbols from /lib/i386-linux-gnu/libpthread.so.0 : module was loaded at an absolute address.
+# ** Warning: (vsim-3116) Problem reading symbols from /lib/i386-linux-gnu/libc.so.6 : module was loaded at an absolute address.
+# ** Warning: (vsim-3116) Problem reading symbols from /lib/ld-linux.so.2 : module was loaded at an absolute address.
+# ** Warning: (vsim-3116) Problem reading symbols from /lib/i386-linux-gnu/libnss_files.so.2 : module was loaded at an absolute address.
+# At cycle                    1, Reset = 1, Speed = 0, current out =  0
+# At cycle                    4, Reset = 0, Speed = 0, current out =  0
+# At cycle                   90, your output =  6,  expected output =  6
+# PASSED
+# At cycle                   90, Reset = 0, Speed = 1, current out =  6
+# At cycle                  640, your output =  7,  expected output is from  7 to          9
+# PASSED
+# At cycle                 1740, your output =  9,  expected output =  9
+# PASSED
+# ** Note: $finish    : /cad2/ece253f/public/5/test/part2_tb.sv(63)
+#    Time: 173950 ns  Iteration: 0  Instance: /part2_tb
+# End time: 15:00:28 on Oct 31,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 7
+######################SUMMARY of part2##########################
+Number of Errors by compiling the verilog code: 0
+Number of Errors by running the simulation: 0
+Number of PASSED: 3
+Number of FAILED: 0
+part2 is done!
