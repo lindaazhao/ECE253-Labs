@@ -3,7 +3,7 @@ module part3 #(parameter CLOCK_FREQUENCY=500) (ClockIn, Reset, Start, Letter, Do
     input logic [2:0] Letter;
     output logic DotDashOut, NewBitOut;
 
-    logic [11:0] encoding, out_sequence;
+    logic [11:0] encoding;
 
     always_comb
 	begin
