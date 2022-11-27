@@ -13,16 +13,19 @@ _start:
 
 OUTERLOOP: # This loops iterates through LIST until all elements are sorted
     addi s2, zero, 0        # Reset s2 and s3 for each iteration
-    addi s3, zero, 0
+    addi s3, zero, 1
+
+    la s0, LIST             # Reset s0 to beginning of LIST (after first element) for each iteration
+    addi s0, s0, 4
 
     # Call INNERLOOP
     jal INNERLOOP
 
-    beq s2, zero, END       # List is sorted if no swaps were performed in most recent iteration
+    beqz s2, END            # List is sorted if no swaps were performed in most recent iteration
     j OUTERLOOP             # If above line does not go through, then keep iterating
 
 INNERLOOP: # This loop goes element by element and calls swap on them
-    bge s3, s1, ENDINNERLOOP
+    bge s3, s1, ENDINNER    # bge = branch if s3 greater than or equal to s1
     lw a1, 0(s0)            # Load first word for SWAP
     lw a2, 4(s0)            # Load next word
     
@@ -32,7 +35,7 @@ INNERLOOP: # This loop goes element by element and calls swap on them
     addi s0, s0, 4          # Increment address to load next word
     addi s3, s3, 1          # Increment s3 to next word
     j INNERLOOP
-ENDINNERLOOP: 
+ENDINNER: 
     jr ra
 
 SWAP:
