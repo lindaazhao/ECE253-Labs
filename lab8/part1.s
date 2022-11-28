@@ -23,12 +23,21 @@ NEXTWORD:
 
 ONES:
     beqz s3, ENDONES    # Loop until data contains no more 1's
+    
+    addi sp, sp, -8     # Store current variables (s3, s6) using stack
+    sw s3, 0(sp)
+    sw s6, 4(sp)
+    
     srli s6, s3, 1      # Perform SHIFT, followed by AND
     and s3, s3, s6
     addi a0, a0, 1      # count the string lengths so far
     b ONES
 
 ENDONES:
+    lw s3, 0(sp)        # Restore variables s3 & s6 using stack
+    lw s6, 4(sp)
+    addi sp, sp, 8
+
     jr ra
 
 NEWLONGEST:

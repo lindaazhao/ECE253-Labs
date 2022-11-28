@@ -1,53 +1,47 @@
 .global _start
 .text
 
-_start:
+_start: # Set up, iterate through LIST until all elements are sorted
     la s0, LIST             # Load the address of LIST into s0
     lw s1, 0(s0)            # s1 holds the number of words in the list
 
-    addi s0, s0, 4          # Increment address to look at first word in list
+    addi s0, s0, 4          # Increment address to first word to sort in list
 
-    addi s2, zero, 0        # s2 keeps track of how many swaps were performed per traversal
+    addi s2, zero, 0        # s2 keeps track of how many swaps were performed per traversal 
+                            # (= 0 if no swaps were performed)
     addi s3, zero, 1        # s3 keeps track of which list element we're on
-    addi a0, zero, 0
 
-OUTERLOOP: # This loops iterates through LIST until all elements are sorted
-    addi s2, zero, 0        # Reset s2 and s3 for each iteration
-    addi s3, zero, 1
+INNERLOOP: # Go through element by element
+    bge s3, s1, ENDINNER
 
-    la s0, LIST             # Reset s0 to beginning of LIST (after first element) for each iteration
-    addi s0, s0, 4
+    add a0, zero, s0        # Put the address of the first word into a0 too
+    jal SWAP
 
-    # Call INNERLOOP
-    jal INNERLOOP
-
-    beqz s2, END            # List is sorted if no swaps were performed in most recent iteration
-    j OUTERLOOP             # If above line does not go through, then keep iterating
-
-INNERLOOP: # This loop goes element by element and calls swap on them
-    bge s3, s1, ENDINNER    # bge = branch if s3 greater than or equal to s1
-    lw a1, 0(s0)            # Load first word for SWAP
-    lw a2, 4(s0)            # Load next word
-    
-    jal SWAP 
-
-    add s2, s2, a0          # Increment s2 if a swap has been performed
-    addi s0, s0, 4          # Increment address to load next word
+    add s2, s2, a0         # Update s2 with value in a0, will increment if a swap was performed
     addi s3, s3, 1          # Increment s3 to next word
+    addi s0, s0, 4          # Increment address to next word
     j INNERLOOP
-ENDINNER: 
-    jr ra
+
+
+ENDINNER:
+    beqz s2, END            # List is sorted if no swaps were performed in most recent iteration
+    j _start                # List not sorted --> start next iteration
+
 
 SWAP:
-    addi a0, zero, 0        # Keep this as 0 if a swap has not been performed
-    bgt a1, a2, SWAPTRUE    # Branch if elements need to be swapped
+    lw t0, 0(a0)
+    lw t1, 4(a0)
+    ble t0, t1, ENDSWAP # Don't need to swap if t0 <= t1
+
+    # This will execute if t0 > t1
+    sw t1, 0(a0)            # Swap memory positions of t0 and t1
+    sw t0, 4(a0)
+    addi a0, zero, 1        # Swap completed, a0 = 1
+    jr ra
 ENDSWAP:
-    jr ra                   # Jump back to where SWAP was called
-SWAPTRUE:
-    sw a2, 0(s0)            # Swap storage locations of a1 and a2
-    sw a1, 4(s0)
-    addi a0, zero, 1        # Return a0 = 1 since swap was performed
-    j ENDSWAP
+    addi a0, zero, 0        # No swap was done, a0 = 0
+    jr ra
+
 
 END:
     ebreak
